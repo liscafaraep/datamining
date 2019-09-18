@@ -88,6 +88,7 @@
             <li><a href="#mengukur-jarak-tipe-categorical">Mengukur Jarak Tipe categorical</a></li>
             <li><a href="#mengukur-jarak-tipe-ordinal">Mengukur Jarak Tipe Ordinal</a></li>
             <li><a href="#menghitung-jarak-tipe-campuran">Menghitung Jarak Tipe Campuran</a></li>
+            <li><a href="#contoh-program">Contoh Program</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -219,8 +220,174 @@ dimana δfij=0δijf=0 - jika xifxif atau xjfxjf adalah hilang (i.e., tidak ada p
    , dan perlakukan zifzif sebagai numerik.</p>
 </li>
 </ul>
+<h2 id="contoh-program">Contoh Program</h2>
+<pre><code class="py">import pandas as pd
+pd.read_csv(&quot;hayes-roth.csv&quot;)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="right">name</th>
+<th align="right">hobby</th>
+<th align="right">age</th>
+<th align="right">educationallevel</th>
+<th align="right">maritalstatus</th>
+<th align="right">class</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">0</td>
+<td align="right">92</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td>1</td>
+</tr>
+<tr>
+<td align="right">1</td>
+<td align="right">10</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td>2</td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="right">83</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">1</td>
+<td>3</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="right">61</td>
+<td align="right">2</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td>3</td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="right">107</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">3</td>
+<td align="right">4</td>
+<td>3</td>
+</tr>
+<tr>
+<td align="right">...</td>
+<td align="right">...</td>
+<td align="right">...</td>
+<td align="right">...</td>
+<td align="right">...</td>
+<td align="right">...</td>
+<td>...</td>
+</tr>
+<tr>
+<td align="right">127</td>
+<td align="right">44</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td>3</td>
+</tr>
+<tr>
+<td align="right">128</td>
+<td align="right">40</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td>1</td>
+</tr>
+<tr>
+<td align="right">129</td>
+<td align="right">90</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td>2</td>
+</tr>
+<tr>
+<td align="right">130</td>
+<td align="right">21</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td align="right">2</td>
+<td align="right">1</td>
+<td>2</td>
+</tr>
+<tr>
+<td align="right">131</td>
+<td align="right">9</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">2</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>132 rows × 6 columns</p>
+<h5 id="menghitung-jarak-numerik">Menghitung Jarak Numerik</h5>
+<p>Numeric attribute adalah atribut kuantitatif, yaitu dapat dihitung banyaknya dan dapat diwakilkan dalam bilangan integer atau real. Numeric attribute dapat berupa skala interval(interval-scaled) atau skala-rasio(ration-scaled), kedua-duanya memiliki nilai mean, median, dan mode. Untuk numeric attribute interval-scaled tidak memiliki true zero-point(nilai nol yang sebenarnya), sedangkan yang ratio-scaled memiliki true zero-point.</p>
+<pre><code class="py">def chordDist(v1,v2,jenis):
+    jumlah=0
+    normv1=0
+    normv2=0
+    for x in range (len(jenis)):
+        normv1=normv1+(int(a.values.tolist()[v1][jenis[x]])**2)
+        normv2=normv2+(int(a.values.tolist()[v2][jenis[x]])**2)
+        jumlah=jumlah+(int(a.values.tolist()[v1][jenis[x]])*int(a.values.tolist()[v2][jenis[x]]))
+    return ((2-(2*jumlah/(normv1*normv2)))**0.5)  
+</code></pre>
+
+<h5 id="menghitung-jarak-binary">Menghitung Jarak Binary</h5>
+<p>Binary attribute adalah nominal atribut yang hanya memiliki dua kategori atau keadaan yaitu 0 dan 1. 0 berarti tidak ada dan 1 berarti ada. Binary attribute biasanya diartikan sebagai Boolean jika kedua keadaannya adalah true(benar) dan false(salah). Binary attribute bisa simetris(symmetric) dan bisa asimetris(assymmetric). Simetris jika kedua nilainya bernilai sama/setimbang harganya, sehingga tidak bisa diberi kode 0 atau 1, sedangkan asimetris kedua nilainya tidak setimbang harganya, sehingga dapat diberi kode 0 atau 1.</p>
+<pre><code class="py">def binaryDist(v1,v2,jenis):
+    q=0
+    r=0
+    s=0
+    t=0
+    for x in range (len(jenis)):
+        if (int(a.values.tolist()[v1][jenis[x]]))==1 and (int(a.values.tolist()[v2][jenis[x]]))==1:
+            q=q+1
+        elif (int(a.values.tolist()[v1][jenis[x]]))==1 and (int(a.values.tolist()[v2][jenis[x]]))==2:
+            r=r+1
+        elif (int(a.values.tolist()[v1][jenis[x]]))==2 and (int(a.values.tolist()[v2][jenis[x]]))==1:
+            s=s+1
+        else:
+            t=t+1
+    return ((r+s)/(q+r+s+t))
+</code></pre>
+
+<h5 id="menghitung-jarak-ordinal">Menghitung Jarak Ordinal</h5>
+<p>Ordinal attribute adalah atribut dengan nilai-nilai yang kemungkinan memiliki  urutan yang mempunyai arti atau tingkatan(ranking), akan tetapi jarak antara nilai-nilainya tidak diketahui. Ordinal attribute berguna untuk mendaftarkan taksiran suatu kualitas yang tidak bisa diukur secara obyektif. Oleh karena itu ordinal attribute biasanya digunakan dalam survey atau rating.</p>
+<pre><code class="py">def ordDist(v1,v2,jenis):
+    jumlah=0
+    for x in range (len(jenis)):
+        z1=int(a.values.tolist()[v1][jenis[x]])-1
+        z2=int(a.values.tolist()[v2][jenis[x]])-1
+        jumlah=jumlah+chordDist(z1,z2,jenis)
+    return (jumlah)
+</code></pre>
+
+<h5 id="atribut-nominal">Atribut Nominal</h5>
+<p>Nominal attribute adalah atribut yang nilainya berupa simbol-simbol atau nama-nama benda. Dan nilainya tidak memiliki urutan yang memiliki arti. Pada nominal attribute, operasi matematika pada nilai-nilainya tidak berarti. Sehingga, tidak masuk akal untuk mencari nilai mean(rata-rata)nya atau nilai median(tengah) nya, kecuali untuk mode(nilai yang paling sering muncul)nya.</p>
 <p>Sumber :</p>
-<p>https://github.com/mulaab/datamining/tree/master/memahami-data</p></div>
+<p>https://github.com/mulaab/datamining/tree/master/memahami-data</p>
+<p>https://datamining10041.wordpress.com/2012/03/25/atribut-nominal-biner-ordinal-dan-numerik/</p></div>
         </div>
 
         <footer class="col-md-12">
